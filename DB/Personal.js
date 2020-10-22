@@ -35,7 +35,8 @@ const personal = new mongoose.Schema({
     faixaEtaria: {
         type:String
     },
-    temFoto: { type: Boolean, default: false }
+    temFoto: { type: Boolean, default: false },
+    fotoUrl: {type: String, default: ""}
 });
 
 module.exports = Personal = mongoose.model('personal',personal);
