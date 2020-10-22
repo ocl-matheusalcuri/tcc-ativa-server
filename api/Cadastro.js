@@ -69,7 +69,7 @@ route.post('/aluno', async (req, res) => {
                     aluno.personalId = null;
                     let alunoModel = new Aluno(aluno);
                     alunoModel.save();
-                    res.json(alunoModel);
+                    return res.json(alunoModel);
                 })
             } else {
                 res.status(400).send("Preencha todos os dados");

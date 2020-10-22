@@ -43,6 +43,11 @@ route.post('/login', async (req, res) => {
                 mensagem: "Senha incorreta!"
             });
         }
+    } else {
+        return res.json({
+            error: true,
+            mensagem: "Usuário inválido!"
+        })
     }
 })
 

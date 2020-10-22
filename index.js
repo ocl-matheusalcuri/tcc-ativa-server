@@ -64,7 +64,7 @@ app.post("/upload", async (req, res) => {
     location = Location;
     key = Key;
   } catch (error) {
-    console.log({error})
+    console.log({locationError: error})
   }
   
   const user = type === "aluno" ? await Aluno.findById(userId) : await Personal.findById(userId);

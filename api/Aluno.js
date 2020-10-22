@@ -48,7 +48,7 @@ route.get('/getAlunosByPersonalId', async (req, res) => {
             res.json(response);
         }
         else {
-            res.status(404).send("Não existem alunos para esse personal");
+            res.json([]);
         }
     });
 });
@@ -69,7 +69,7 @@ route.put('/editarPerfil', async (req, res) => {
                 res.status(400).send("Preencha todos os dados");
             }
             response.save();
-            res.json(response);
+            return res.json(response);
         }
         else {
             res.status(404).send("Aluno Inexistente");
