@@ -9,6 +9,6 @@
     "node-pre-gyp": "^0.15.0"
   },
   "scripts": {
-    "start": "node index.js"
+    "start": "node server.js"
   }
 }
