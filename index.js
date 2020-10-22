@@ -51,6 +51,6 @@ app.use('/api/agendaModel', require('./api/Agenda'))
 app.use('/api/alunoModel', require('./api/Aluno'))
 app.use('/api/personalModel', require('./api/Personal'))
 app.use('/api/treinoModel', require('./api/Treino'))
-const Port = process.env.Port || 3001;
+const Port = process.env.PORT || 3001;
 
 app.listen(Port,()=>console.log('Server started'));
