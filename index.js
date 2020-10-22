@@ -43,7 +43,7 @@ app.post('/upload', async (req, res) => {
     return res.json({
         user: {name: user.nome, email: user.email, temFoto: user.temFoto},
         //45 ou 58
-        url: `http://192.168.0.58:3001/${user?._id}.png?${Date.now()}`
+        url: `https://gentle-earth-50603.herokuapp.com//${user?._id}.png?${Date.now()}`
     })
 });
 
