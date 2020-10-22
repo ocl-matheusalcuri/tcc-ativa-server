@@ -5,7 +5,8 @@
     "express": "^4.17.1",
     "fs": "^0.0.1-security",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^5.10.9"
+    "mongoose": "^5.10.9",
+    "node-pre-gyp": "^0.15.0"
   },
   "scripts": {
     "start": "node index.js"
