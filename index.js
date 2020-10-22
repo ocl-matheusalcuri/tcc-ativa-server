@@ -39,9 +39,10 @@ app.use('/api', require('./api/AuthValidation'));
 app.use(authMiddleware);
 
 app.post("/upload", multer(multerConfig).single("file"), async (req, res) => {
-    const { originalname: name, size, key, location: url = "" } = req.file;
     console.log({file: req.file})
     console.log({req: req.body})
+    const { originalname: name, size, key, location: url = "" } = req.file;
+    
     const { userId, type } = req.body;
     const user = type === "aluno" ? await Aluno.findById(userId) : await Personal.findById(userId);
 

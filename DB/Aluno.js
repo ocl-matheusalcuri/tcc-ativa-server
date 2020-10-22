@@ -48,7 +48,7 @@ const aluno = new mongoose.Schema({
     imc: {
         type:String, default: ""
     },
-    fotoUrl: {type: String, default: ""}
+    fotoUrl: {type: String}
 });
 
 module.exports = Aluno = mongoose.model('aluno',aluno);
