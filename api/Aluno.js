@@ -3,6 +3,8 @@ const mongoose = require('mongoose');
 const Aluno = require('../DB/Aluno');
 const Personal = require('../DB/Personal');
 const route = express.Router();
+const bcrypt = require('bcrypt');
+
 
 mongoose.set('useFindAndModify', false);
 
@@ -39,6 +41,27 @@ route.get('/getById', async (req, res) => {
             return res.json([]);
         }
     });
+});
+
+route.put('/deletarRelation', async (req, res) => {
+    const { alunoId, senha } = req.body.body;
+    const aluno = await Aluno.findById(alunoId);
+
+    if(aluno) {
+        const match = await bcrypt.compare(senha, aluno.password);
+
+        if(match) {
+            aluno.personalId = null;
+            await aluno.save();
+
+            return res.json(aluno)
+        } else {
+            return res.json({
+                error: true,
+                mensagem: "Senha incorreta!"
+            })
+        }
+    }
 });
 
 route.get('/getAlunosByPersonalId', async (req, res) => {
@@ -111,9 +134,11 @@ route.put('/incluirPersonal', async (req, res) => {
             else {
                 res.status(400).send("Selecione um Personal");
             }
-        }
-        else {
-            res.status(404).send("Aluno Inexistente");
+        } else {
+            return res.json({
+                error: true,
+                mensagem: "Aluno não encontrado!"
+            })
         }
     });
 });
