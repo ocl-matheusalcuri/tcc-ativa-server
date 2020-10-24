@@ -21,7 +21,7 @@ route.get('/getAll', async (req, res) => {
 
 route.get('/getFiltrado', async (req, res) => {
     const { nome, personalId } = req.query;
-    await Aluno.find({personalId: personalId, nome: { "$regex": nome, "$options": "i"}}).then((response) => {
+    await Aluno.find({personalId: personalId, $or: [{nome: { "$regex": nome, "$options": "i"}}, {email: { "$regex": nome, "$options": "i"}}]}).then((response) => {
         if (response.length != 0) {
             res.json(response);
         }

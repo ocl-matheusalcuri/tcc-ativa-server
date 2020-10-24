@@ -26,13 +26,21 @@ app.use(morgan("dev"));
 
 app.get('/', (req, res) => {
     res.send("Trabalho de Conclusão de Curso!");
-})
+});
+
+app.get('/publico', (req, res) => {
+  res.send("Trabalho de Conclusão de Curso!");
+});
 
 
 app.use('/api', require('./api/Cadastro'));
 app.use('/api', require('./api/AuthValidation'));
 
 app.use(authMiddleware);
+
+app.get('/privado', (req, res) => {
+  res.send("Você não deveria poder ver isso!");
+});
 
 app.post("/upload", async (req, res) => {
 
