@@ -77,13 +77,14 @@ route.get('/getAlunosByPersonalId', async (req, res) => {
 });
 
 route.put('/editarPerfil', async (req, res) => {
-    const { alunoId, nome, email, nascimento, hrAtiva, saude, prepFisico, objetivo } = req.body.body;
+    const { alunoId, nome, email, celular, nascimento, hrAtiva, saude, prepFisico, objetivo } = req.body.body;
     let aluno = await Aluno.findById(alunoId).then((response) => {
         if (response != null) {
-            if (nome != "" && email != "" && nascimento != "" && hrAtiva != "" && saude != "" && prepFisico != "" && objetivo != "") {
+            if (nome != "" && email != "" && celular != "" && nascimento != "" && hrAtiva != "" && saude != "" && prepFisico != "" && objetivo != "") {
                 response.nome = nome;
                 response.email = email;
                 response.nascimento = nascimento;
+                response.celular = celular;
                 response.hrAtiva = hrAtiva;
                 response.saude = saude;
                 response.prepFisico = prepFisico;

@@ -37,11 +37,17 @@ route.post('/personal', async (req, res) => {
                 })
             }
             else {
-                res.status(404).send("Preencha todos os dados");
+                return res.json({
+                    error: true,
+                    mensagem: "Preencha todos os campos!"
+                });
             }
         }
         else {
-            res.status(404).send("Esse personal já possui um cadastro");
+            return res.json({
+                error: true,
+                mensagem: "Email já cadastrado!"
+            });
         }
     });
 });
@@ -72,11 +78,17 @@ route.post('/aluno', async (req, res) => {
                     return res.json(alunoModel);
                 })
             } else {
-                res.status(400).send("Preencha todos os dados");
+                return res.json({
+                    error: true,
+                    mensagem: "Preencha todos os campos!"
+                });
             }
         }
         else {
-            res.status(404).send("Esse aluno já possui um cadastro");
+            return res.json({
+                error: true,
+                mensagem: "Email já cadastrado!"
+            });
         }
     });
 });

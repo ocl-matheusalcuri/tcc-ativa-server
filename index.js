@@ -9,7 +9,6 @@ const authMiddleware = require('./authValidation');
 const fileType = require('file-type');
 
 const cors = require('cors');
-const fs = require('fs');
 const morgan = require("morgan");
 
 const app = express();
@@ -22,6 +21,8 @@ app.use(cors());
 
 connectDB();
 app.use(morgan("dev"));
+
+
 
 
 app.get('/', (req, res) => {
