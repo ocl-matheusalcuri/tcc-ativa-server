@@ -69,13 +69,16 @@ route.put('/editarTreino', async (req, res) => {
 });
 
 route.delete('/deletarTreino', async (req, res) => {
-    const { treinoId } = req.body;
-    Treino.findByIdAndRemove(treinoId).exec().then((response) => {
+    const { treinoId } = req.query;
+    Treino.findByIdAndRemove(treinoId).then((response) => {
         if (response != null) {
-            res.status(200).send("Treino Excluido com Sucesso");
+            return res.json(response);
         }
         else {
-            res.status(404).send("Treino Inexistente");
+            return res.json({
+                error: true,
+                mensagem: "Não foi possível deletar!"
+            });
         }
     });
 });
