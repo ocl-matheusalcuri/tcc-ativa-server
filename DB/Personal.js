@@ -24,7 +24,7 @@ const personal = new mongoose.Schema({
         type:String
     },
     cref: {
-        type:Number
+        type:String
     },
     foco: {
         type:String
