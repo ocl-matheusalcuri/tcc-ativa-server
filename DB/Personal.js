@@ -36,7 +36,9 @@ const personal = new mongoose.Schema({
         type:String
     },
     temFoto: { type: Boolean, default: false },
-    fotoUrl: {type: String, default: ""}
+    fotoUrl: {type: String, default: ""},
+    cidade: { type: String },
+    estado: { type: String }
 });
 
 module.exports = Personal = mongoose.model('personal',personal);

@@ -22,7 +22,6 @@ app.use(cors());
 connectDB();
 app.use(morgan("dev"));
 
-
 app.get('/', (req, res) => {
     res.send("Trabalho de Conclusão de Curso!");
 });

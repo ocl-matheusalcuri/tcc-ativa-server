@@ -11,11 +11,11 @@ mongoose.set('useFindAndModify', false);
 
 
 route.post('/personal', async (req, res) => {
-    const { password, nome, celular, email, nascimento, instagram, facebook, cref, foco, especializacao, faixaEtaria } = req.body.user;
+    const { password, nome, celular, email, nascimento, instagram, facebook, cref, foco, especializacao, faixaEtaria, cidade, estado } = req.body.user;
     await Personal.find({ email: email }).then((response) => {
         if (response.length == 0) {
             let personal = {};
-            if (password != "" && nome != "" && celular != "" && email != "" && nascimento != "" && instagram != "" && facebook != "" && cref != "" && foco != "" && especializacao != "" && faixaEtaria != "") {
+            if (password != "" && nome != "" && celular != "" && email != "" && nascimento != "" && instagram != "" && facebook != "" && cref != "" && foco != "" && especializacao != "" && faixaEtaria != "" && cidade != "" && estado != "") {
                 bcrypt.hash(password, 10).then(hash => {
 
                     let encryptedPssword = hash;
@@ -31,6 +31,8 @@ route.post('/personal', async (req, res) => {
                     personal.foco = foco;
                     personal.especializacao = especializacao;
                     personal.faixaEtaria = faixaEtaria;
+                    personal.cidade = cidade;
+                    personal.estado = estado;
                     let personalModel = new Personal(personal);
                     personalModel.save();
                     res.json(personalModel);
